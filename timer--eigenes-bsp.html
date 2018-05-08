@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+
+
+  var circle = function() {
+    var c = document.getElementById('Canvas-bg');
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.strokeStyle="red";
+    ctx.fillStyle="red";
+    ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+    ctx.stroke();
+  };
+
+  var draw = function(numb) {
+    var c = document.getElementById('Canvas');
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(100, 75, 50, 0, numb * Math.PI);
+    ctx.stroke();
+  };
+
+  var countdown = function(z) {
+
+    console.log(z);
+    var y=4;
+
+
+    var int = setInterval( function() {
+
+      draw(z);
+      z = z + 0.5;
+
+      $('#zahler').html(--y)
+
+      if (y==0) {
+        clearInterval(int);
+      };
+
+
+    },1000);
+  };
+
+
+
+$( document ).ready( function() {
+
+  circle();
+  countdown(0.5);
+
+
+
+});
+
+	</script>
+	<style>
+
+    #Canvas-bg {}
+
+	</style>
+</head>
+<body>
+	<h1>Timer</h1>
+  <canvas id='Canvas-bg'></canvas>
+  <canvas id='Canvas'></canvas>
+  <span id="zahler">4</span>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+
+      $( document ).ready( function() {
+
+
+        var countdown = function ( x, cb ) {
+          $('#c1').html( x );
+          if (x == 0) {
+            cb();
+            return;
+          }
+          setTimeout( function() {
+
+            x--;
+            countdown( x, cb );
+
+          },1000);
+        }
+
+
+
+
+        countdown(5, function () {
+          $('#c1').css({color:'red'});
+        });
+
+
+        var y = 5;
+        var int = setInterval ( function() {
+          console.log(y);
+          $( '#c2' ).html(--y);
+
+          if (y==0)  {
+            clearInterval (int);
+          }
+
+
+        }, 1000);
+
+
+
+
+
+        var countdownRAF = function (z, start) {
+          $('#c3').html(z);
+          if(z==0) return;
+          requestAnimationFrame(function() {
+            if(Date.now() - start >= 1000) {
+            z--;
+            start = Date.now();
+            }
+            countdownRAF(z, start);
+          });
+        };
+        countdownRAF(5, Date.now());
+
+
+
+
+
+
+
+
+
+      });
+
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+
+  <span id="c1">5</span>
+  <span id="c2">5</span>
+  <span id="c3">5</span>
+
+
+</body>
+</html>

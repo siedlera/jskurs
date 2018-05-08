@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+
+  //dom manipulation
+  //plugin
+
+  //vorgehensweise -> alle checkboxen suchen ->im DOM checkboxen mit canvas ersetzten
+  //canvas mit funktion wie checkbox
+  //each schleifen
+
+  var drawCheckbox = function( ctx, checked ) {
+  	ctx.clearRect(0,0,40,40);
+  	ctx.strokeStyle = '#000';
+  	ctx.lineWidth = 1;
+  	ctx.strokeRect(2,2,36,36);
+  }
+
+
+  var checkbox = function () {
+
+    console.log('test-func');
+    var draw = $('<canvas>')
+      .attr('width', '40')
+      .attr('height', '40')
+      //.get(0).getContext('2d');
+
+
+
+    return draw;
+
+
+
+  };
+
+  $( document ).ready( function() {
+
+
+    //$('input').replaceWith("<p>Hallo</p>");
+    //console.log($('test'));
+
+
+
+    $('input').each( function() {
+
+      //replaceWith("<p>Hallo</p>");
+      console.log('test');
+      $('input').replaceWith( checkbox );
+
+
+
+    });
+
+
+  });
+
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+
+  <input id="test" type="checkbox" name="agb">Datenschutz alles gut.<br>
+  <input id="test" type="checkbox" name="agb">Datenschutz alles gut.<br>
+
+</body>
+</html>
