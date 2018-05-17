@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+
+  var Tier = function( anzahlBeine ) {
+    this.Beine = anzahlBeine;
+    this.entferneBein = function(){
+      this.Beine--;
+    }
+    this.toString = function() {
+      return 'Tier mit ' + this.Beine + ' Beinen';
+    }
+  }
+  Tier.prototype.beinDazu = function () {
+    this.Beine++;
+  }
+
+
+  var dumbo = new Tier(4);
+  dumbo.entferneBein();
+  dumbo.beinDazu();
+
+  console.log(dumbo.toString());
+
+
+
+  //OOP mit ES6
+  console.log( '! -- OOP mit ES& -- !')
+
+  class Auto {
+    constructor( anzahlReifen ) {
+      this.reifen = anzahlReifen;
+      this.toString = function() {
+        return 'Auto mit ' + this.reifen + ' Reifen!';
+      }
+    }
+    nagel() {
+      this.reifen--;
+    }
+  }
+
+  class LKW extends Auto {
+    constructor() {
+      super(6);
+      this.toString = function() {
+        return 'LKW hat '+this.reifen+ ' Reifen';
+      }
+    }
+  }
+
+  var brum = new Auto(4);
+  brum.nagel();
+  console.log(brum.reifen);
+  console.log(brum.toString());
+
+  var truck = new LKW()
+  alert (truck);
+
+
+
+	</script>
+	<style>
+	</style>
+</head>
+<body>
+
+
+</body>
+</html>

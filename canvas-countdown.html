@@ -11,10 +11,7 @@
 
         var countdown = function ( x, cb ) {
           $('#c1').html( x );
-          if (x == 0) {
-            cb();
-            return;
-          }
+
           setTimeout( function() {
 
             x--;
