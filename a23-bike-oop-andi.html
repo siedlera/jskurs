@@ -41,27 +41,35 @@ class Bike {
 		this.node = $( svgCode );
 		this.node.find('path').css({fill:this.farbe});
 		this.createBahn();
-		this.speed = Math.random()*10;
-		this.node.css({'left':'0', 'transition':'all ' + this.speed + 's' });
+		this.speed = Math.random()*10000;
+		//this.node.css({'left':'0', 'transition':'all ' + this.speed + 's' });
 		this.start();
 	}
 
 	createBahn() {
-		$( '<div class="bahn">' ).appendTo( 'body' ).append( this.node );
+		$( '<div class="bahn">' ).appendTo( 'body' )
+			.append( '<div class="finish">' )
+			.append( this.node );
 	}
 
 	start() {
-		$( document ).on( 'click', '#start', function() {
-			$( 'svg' ).css({ 'left':'500' });
-		});
 
+		console.log('Speed: ' + this.speed );
+		var speed = this.speed;
+
+		$( document ).on( 'click', '#start', function() {
+			var distance = $('.bahn').width() - 100;
+			console.log( 'Speed:' + speed );
+
+			$( 'svg' ).animate({ 'left': distance }, function() { console.log('Fahrrad im Ziel'); });
+		});
 	}
 
 };
 
 $( document ).on( 'click', '#btn', function() {
 	new Bike($('#farbe').val());
-	console.log('Fahhrad wurde erstellt');
+	console.log('Fahrrad wurde erstellt');
 });
 
 
@@ -69,6 +77,13 @@ $( document ).on( 'click', '#btn', function() {
 	<style>
 	svg {width:100px; position: relative;}
 	.bahn {border-bottom: 1px gray solid;}
+	.finish {
+		height: 100px;
+    position: absolute;
+    border-left: 1px #ef9c7e solid;
+    width: 50px;
+		right: 0px;
+	}
 
 	</style>
 </head>
