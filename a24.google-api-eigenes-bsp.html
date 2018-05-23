@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script src="jquery-3.3.1.min.js"></script>
+  <script async
+  src="https://maps.googleapis.com/maps/api/js?callback=machkarte"></script>
+
+	<script>
+
+    var machkarte = function() {
+
+      var kartenoptionen = {
+        center: {lat: 48.1, lng: 16.45},
+        zoom: 8
+      }
+
+      var allmarker = [];
+
+
+
+      var meineMap = new google.maps.Map( $('#karte').get(0), kartenoptionen );
+
+
+    $( document ).on( 'click', '#set', function() {
+
+      var center = meineMap.getCenter();
+
+      allmarker = new google.maps.Marker({
+
+        position: center,
+        map:meineMap,
+        label:'A'
+
+      });
+
+      console.log( allmarker );
+
+    });
+
+
+  };
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+	<style>
+    #karte {border: 1px gray solid; with: 400px; height: 300px;}
+	</style>
+
+</head>
+<body>
+  <h1>API Beispiel</h1>
+  <div id="karte"></div>
+  <input type="text">
+  <button type="button" id="set">Set</button>
+
+
+</body>
+</html>
