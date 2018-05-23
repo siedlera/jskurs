@@ -41,22 +41,18 @@ class Bike {
 		this.node = $( svgCode );
 		this.node.find('path').css({fill:this.farbe});
 		this.createBahn();
-		this.speed = Math.random()*10;
+		this.speed = Math.random()*100;
 		this.node.css({'left':'0', 'transition':'all ' + this.speed + 's' });
-		this.start();
+		this.startRace();
 	}
-
 	createBahn() {
 		$( '<div class="bahn">' ).appendTo( 'body' ).append( this.node );
 	}
-
-	start() {
+	startRace() {
 		$( document ).on( 'click', '#start', function() {
-			$( 'svg' ).css({ 'left':'500' });
+			$( 'svg' ).css({ 'left':'95%' });
 		});
-
 	}
-
 };
 
 $( document ).on( 'click', '#btn', function() {
