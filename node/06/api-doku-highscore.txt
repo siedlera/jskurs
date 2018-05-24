@@ -1,0 +1,27 @@
+Schnittstelle zum Highscore
+
+
+URL:
+
+REQUEST-Methode: POST
+Request-Daten-Format: JSON
+REQUEST-Daten:
+  name: STRING
+  punkte: NUMBER
+
+RESPONSE Erfolg
+  RESPONSE-HTTP-Status: 200
+  RESPONSE-Format: JSON
+  RESPONSE-Daten Erfolg:
+
+  {spe}
+  {
+    highscore: {
+      name[i]: STRING
+      punkte[i]: NUMBER
+    }
+  }
+
+RESPONSE Fehler
+  RESPONSE-HTTP-Status: 500
+  RESPONSE-Daten: leer
